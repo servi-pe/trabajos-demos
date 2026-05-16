@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos - Christian's Muebles</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Estilos adicionales específicos para la página de productos */
+    .productos-page {
+      background: #f3f3f3;
+      padding: 140px 20px 80px;
+      min-height: 100vh;
+    }
+
+    .productos-page h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .productos-page .sub-header {
+      text-align: center;
+      color: #666;
+      margin-bottom: 60px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Grid de categorías */
+    .categorias-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+
+    .categoria-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .categoria-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .categoria-header {
+      background: #1e293b;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .categoria-header h2 {
+      color: #d4af37;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .categoria-header h2 img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .categoria-header h2 .material-icons {
+      font-size: 32px;
+      color: #d4af37;
+    }
+
+    .categoria-desc {
+      text-align: center;
+      padding: 15px;
+      font-family: 'Inter', sans-serif;
+      color: #555;
+      font-size: 14px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .productos-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 15px;
+    }
+
+    .productos-mini img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .productos-mini img:hover {
+      transform: scale(1.05);
+    }
+
+    .categoria-footer {
+      padding: 15px;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+
+    .categoria-footer .whatsapp-btn {
+      margin: 0;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    /* Modal para ver imágenes ampliadas */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .productos-page {
+        padding: 120px 15px 60px;
+      }
+
+      .productos-page h1 {
+        font-size: 32px;
+      }
+
+      .categorias-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .productos-mini {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .productos-mini img {
+        height: 90px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .productos-mini img {
+        height: 80px;
+      }
+      
+      .categoria-header h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER (mismo que index) -->
+<header class="header">
+  <div class="logo" aria-label="Logo de la empresa">
+     <a href="index.html">
+    <img src="images/logo111.png" alt="Christian's Muebles">
+     </a>
+  </div>
+
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="index.html">Inicio</a>
+    <a href="#">Nosotros</a>
+    <a href="productos.html">Productos</a>
+    <a href="#">Contacto</a>
+  </nav>
+
+  <button class="menu-btn" aria-label="Menú" aria-expanded="false">☰</button>
+</header>
+
+<!-- MENÚ MÓVIL -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-nav">
+    <a href="index.html">Inicio</a>
+    <a href="#">Nosotros</a>
+    <a href="productos.html">Productos</a>
+    <a href="#">Contacto</a>
+  </nav>
+</div>
+
+<!-- PÁGINA DE PRODUCTOS -->
+<section class="productos-page">
+  <h1>Nuestros Productos</h1>
+  <p class="sub-header">Explora todas nuestras categorías y encuentra el mueble perfecto para tu hogar</p>
+
+  <div class="categorias-grid">
+    
+    <!-- ROPEROS -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><img src="images/roperos.png" alt="icono"> ROPEROS</h2>
+      </div>
+      <div class="categoria-desc">
+        Más espacio, más orden y el estilo que tu habitación necesita
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/roperos/producto1.jpg" alt="Ropero 1">
+        <img src="images/productos/roperos/producto2.jpg" alt="Ropero 2">
+        <img src="images/productos/roperos/producto3.jpg" alt="Ropero 3">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- CÓMODAS -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><img src="images/comoda.png" alt="icono"> CÓMODAS</h2>
+      </div>
+      <div class="categoria-desc">
+        Organiza tu día con un diseño práctico y moderno
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/comodas/producto1.jpg" alt="Cómoda 1">
+        <img src="images/productos/comodas/producto2.jpg" alt="Cómoda 2">
+        <img src="images/productos/comodas/producto3.jpg" alt="Cómoda 3">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- VELADORES -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><span class="material-icons">bedtime</span> VELADORES</h2>
+      </div>
+      <div class="categoria-desc">
+        El complemento perfecto para tu descanso y estilo
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/veladores/producto1.jpg" alt="Velador 1">
+        <img src="images/productos/veladores/producto2.jpg" alt="Velador 2">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- ZAPATERAS -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><span class="material-icons">stairs</span> ZAPATERAS</h2>
+      </div>
+      <div class="categoria-desc">
+        Ordena tus zapatos y gana espacio sin esfuerzo
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/zapateras/producto1.jpg" alt="Zapatera 1">
+        <img src="images/productos/zapateras/producto2.jpg" alt="Zapatera 2">
+        <img src="images/productos/zapateras/producto3.jpg" alt="Zapatera 3">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- ESPEJOS -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><span class="material-icons">flip</span> ESPEJOS</h2>
+      </div>
+      <div class="categoria-desc">
+        Realza tu ambiente con un diseño que ilumina y amplía tu espacio
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/espejos/producto1.jpg" alt="Espejo 1">
+        <img src="images/productos/espejos/producto2.jpg" alt="Espejo 2">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- TOCADORES / ORGANIZADORES -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><span class="material-icons">table_restaurant</span> TOCADORES</h2>
+      </div>
+      <div class="categoria-desc">
+        Un lugar pensado para ti, donde todo está en su sitio
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/tocadores/producto1.jpg" alt="Tocador 1">
+        <img src="images/productos/tocadores/producto2.jpg" alt="Tocador 2">
+        <img src="images/productos/tocadores/producto5.jpg" alt="Tocador 3">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- CENTROS DE ENTRETENIMIENTO -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><span class="material-icons">tv</span> CENTROS DE ENTRETENIMIENTO</h2>
+      </div>
+      <div class="categoria-desc">
+        Convierte tu sala en el punto ideal para disfrutar cada momento
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/entretenimiento/producto1.jpg" alt="Centro 1">
+        <img src="images/productos/entretenimiento/producto2.jpg" alt="Centro 2">
+        <img src="images/productos/entretenimiento/producto3.jpg" alt="Centro 3">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- ESCRITORIOS -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><span class="material-icons">desktop_windows</span> ESCRITORIOS</h2>
+      </div>
+      <div class="categoria-desc">
+        Un espacio funcional para concentrarte y dar vida a tus ideas
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/escritorios/producto1.jpg" alt="Escritorio 1">
+        <img src="images/productos/escritorios/producto2.jpg" alt="Escritorio 2">
+        <img src="images/productos/escritorios/producto3.jpg" alt="Escritorio 3">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- OTROS -->
+    <div class="categoria-card">
+      <div class="categoria-header">
+        <h2><i class="fas fa-cube"></i> OTROS</h2>
+      </div>
+      <div class="categoria-desc">
+        Soluciones únicas para cada espacio de tu hogar
+      </div>
+      <div class="productos-mini">
+        <img src="images/productos/veladores/producto3.png" alt="Otro producto">
+      </div>
+      <div class="categoria-footer">
+        <button class="whatsapp-btn">Consultar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="unique-footer" class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>NUESTROS PRODUCTOS</h3>
+      <ul>
+        <li>Muebles de Cocina</li>
+        <li>Salas de Entretenimiento</li>
+        <li>Muebles de Oficina</li>
+        <li>Muebles de Dormitorio</li>
+        <li>Closets</li>
+        <li>Puertas</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>UBÍCANOS</h3>
+      <p>
+        Programa de Vivienda Las Torres de Pachacamac<br>
+        Mz.A Lt.22 - Distrito de Pachacamac, Lima - Perú
+      </p>
+      <p>
+        Celulares:<br>
+        945 291927 / 990 851750
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h3>ESCRÍBENOS</h3>
+      <p>¿Quieres comunicarte y solicitar información? Escríbenos por este medio</p>
+      <p>
+        <a href="mailto:muebleschristian@mueblesperu.com">
+          muebleschristian@mueblesperu.com
+        </a>
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h3>SÍGUENOS EN:</h3>
+      <div class="social-icons">
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© Copyright 2024, Christian's Muebles - Todos los Derechos Reservados.</p>
+    <p>Diseño Web <a href="https://www.facebook.com" target="_blank">BRVF®</a></p>
+  </div>
+</footer>
+
+<!-- Modal para ampliar imágenes -->
+<div class="modal" id="imageModal">
+  <span class="modal-close">&times;</span>
+  <img id="modalImage" src="" alt="Imagen ampliada">
+</div>
+
+<script>
+  // ========== MENÚ MÓVIL ==========
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
+    document.body.appendChild(overlay);
+    
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      });
+      
+      overlay.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      const enlaces = document.querySelectorAll('.mobile-nav a');
+      enlaces.forEach(enlace => {
+        enlace.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  });
+
+  // ========== MODAL PARA AMPLIAR IMÁGENES ==========
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const closeModal = document.querySelector('.modal-close');
+
+  // Seleccionar todas las imágenes de productos-mini
+  const allProductImages = document.querySelectorAll('.productos-mini img');
+
+  allProductImages.forEach(img => {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation();
+      modal.classList.add('active');
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+    });
+  });
+
+  // Cerrar modal al hacer clic en la X
+  if (closeModal) {
+    closeModal.addEventListener('click', function() {
+      modal.classList.remove('active');
+    });
+  }
+
+  // Cerrar modal al hacer clic fuera de la imagen
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+
+  // ========== BOTONES WHATSAPP ==========
+  const whatsappBtns = document.querySelectorAll('.whatsapp-btn');
+  whatsappBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      window.open('https://wa.me/51998224145?text=Hola,%20me%20interesa%20información%20sobre%20sus%20productos', '_blank');
+    });
+  });
+</script>
+
+</body>
+</html>

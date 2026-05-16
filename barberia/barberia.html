@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Patrón | Barbería</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">EL PATRÓN "BARBERIA" </div>
+  </div>
+
+  <!-- Navbar minimalista -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        El PATRÓN
+      </div>
+      <div class="nav-links">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#galeria" class="nav-link">Galería</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </div>
+      <button class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero - Imagen arriba -->
+  <section id="inicio" class="hero">
+    <div class="hero-grid">
+      <div class="hero-image">
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=500&fit=crop" alt="Barbería">
+          <div class="image-tag">
+            <i class="fas fa-scissors"></i> EST. 2026
+          </div>
+        </div>
+      </div>
+      <div class="hero-text">
+        
+        <h1 class="hero-title">
+          Cortes que<br>
+          <span>Definen</span>
+        </h1>
+        <p class="hero-desc">No es solo un corte. Es una declaración. Precisión milimétrica, estilo inconfundible.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="agendarBtn">Agendar cita por Whatsapp →</button>
+          <div class="hero-info">
+            <span>+500</span>
+            <p>clientes<br>satisfechos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- Servicios - Layout único -->
+  <section id="servicios" class="services">
+    <div class="services-header">
+      
+      <h2>Servicios</h2>
+      <p>Lo que hacemos, lo hacemos bien.</p>
+    </div>
+    
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div class="service-info">
+          <h3>Corte Clásico</h3>
+          <p>Precisión tradicional</p>
+        </div>
+        <div class="service-price">$15k</div>
+        <button class="service-btn">→</button>
+      </div>
+      
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div class="service-info">
+          <h3>Fade</h3>
+          <p>Degradado perfecto</p>
+        </div>
+        <div class="service-price">$18k</div>
+        <button class="service-btn">→</button>
+      </div>
+      
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div class="service-info">
+          <h3>Barba</h3>
+          <p>Perfilado premium</p>
+        </div>
+        <div class="service-price">$10k</div>
+        <button class="service-btn">→</button>
+      </div>
+      
+      <div class="service-item featured-service">
+        <div class="service-num">04</div>
+        <div class="service-info">
+          <h3>Paquete Patrón</h3>
+          <p>Corte + Barba</p>
+        </div>
+        <div class="service-price">$25k</div>
+        <button class="service-btn">→</button>
+      </div>
+      
+      <div class="service-item">
+        <div class="service-num">05</div>
+        <div class="service-info">
+          <h3>Diseños</h3>
+          <p>Líneas y grabados</p>
+        </div>
+        <div class="service-price">$5k+</div>
+        <button class="service-btn">→</button>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- Galería horizontal -->
+  <section id="galeria" class="gallery">
+    <div class="gallery-header">
+      
+      <h2>Galería</h2>
+      <p>Resultados que hablan</p>
+    </div>
+    
+    <div class="gallery-scroll">
+      <div class="gallery-track">
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=500&fit=crop" alt="Corte 1">
+          <div class="card-caption">Fade perfecto</div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=500&fit=crop" alt="Corte 2">
+          <div class="card-caption">Barba definida</div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=300&q=80">
+          <div class="card-caption">Estilo urbano</div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788475?w=400&h=500&fit=crop" alt="Corte 4">
+          <div class="card-caption">Diseño exclusivo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contacto" class="cta">
+    <div class="cta-container">
+     
+      <h2>¿Listo para<br>el cambio?</h2>
+      <p>Agenda tu cita en minutos</p>
+      <div class="cta-buttons">
+        <a href="#" class="cta-wa">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="#" class="cta-web">
+          <i class="fas fa-calendar"></i> WebApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-mark">◆</div>
+        <p>EL PATRÓN<br>BARBERÍA</p>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 El Patrón — Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="reservaModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Agendar cita</h3>
+        <button class="modal-close">×</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" placeholder="Nombre completo" id="clientName">
+        <input type="tel" placeholder="WhatsApp" id="clientPhone">
+        <input type="datetime-local" id="clientDate">
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel modal-cancel">Cancelar</button>
+        <button class="btn-confirm modal-confirm">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+// Loader
+window.addEventListener('load', () => {
+  const loader = document.querySelector('.loader');
+  setTimeout(() => {
+    loader.classList.add('fade-out');
+  }, 800);
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Mobile menu
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle?.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+// Modal
+const modal = document.getElementById('reservaModal');
+let selectedService = null;
+
+document.querySelectorAll('.service-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const item = btn.closest('.service-item');
+    const serviceName = item.querySelector('h3').innerText;
+    const servicePrice = item.querySelector('.service-price').innerText;
+    selectedService = { name: serviceName, price: servicePrice };
+    modal.classList.add('active');
+  });
+});
+
+document.getElementById('agendarBtn')?.addEventListener('click', () => {
+  selectedService = { name: 'Consulta personalizada', price: 'A convenir' };
+  modal.classList.add('active');
+});
+
+document.querySelectorAll('.modal-close, .modal-cancel').forEach(btn => {
+  btn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+});
+
+modal?.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+  }
+});
+
+document.querySelector('.modal-confirm')?.addEventListener('click', () => {
+  const name = document.getElementById('clientName').value;
+  const phone = document.getElementById('clientPhone').value;
+  const date = document.getElementById('clientDate').value;
+  
+  if (!name || !phone || !date) {
+    alert('Completa todos los campos');
+    return;
+  }
+  
+  const message = `Hola! Quiero agendar en El Patrón.%0A%0A Servicio: ${selectedService?.name}%0A Precio: ${selectedService?.price}%0A Nombre: ${name}%0A Teléfono: ${phone}%0A Fecha: ${date}`;
+  
+  window.open(`https://wa.me/57300000000?text=${message}`, '_blank');
+  
+  modal.classList.remove('active');
+  
+  document.getElementById('clientName').value = '';
+  document.getElementById('clientPhone').value = '';
+  document.getElementById('clientDate').value = '';
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    target?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Gallery card click
+document.querySelectorAll('.gallery-card').forEach(card => {
+  card.addEventListener('click', () => {
+    alert('✨ Próximamente: Galería completa');
+  });
+});
+
+// Animation on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-item, .gallery-card, .cta-container').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+
+
+
+  </script>
+</body>
+</html>
